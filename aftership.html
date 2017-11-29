@@ -1,0 +1,59 @@
+<script type='text/javascript'>
+	RED.nodes.registerType('aftership-config', {
+		category: 'config',
+		defaults: {
+			name: {
+				value: '',
+				require: false
+			},
+			key: {
+				type: 'text'
+			}
+		},
+		label: function() {
+			return this.name ? this.name : 'Aftership'
+		}
+	})
+</script>
+
+<script type='text/x-red' data-template-name='aftership-config'>
+	<div class='form-row'>
+		<label for='node-config-input-name'><i class='fa fa-tag'></i> Name</label>
+		<input type='text' id='node-config-input-name'/>
+	</div>
+	<div class='form-row'>
+		<label for='node-config-input-apikey'><i class='fa'></i> Api Key</label>
+		<input type='text' id='node-config-input-key' />
+	</div>
+</script>
+
+<script type='text/javascript'>
+	RED.nodes.registerType('aftership', {
+		category: 'aftership',
+		defaults: {
+			name: {
+				value: '',
+				required: false
+			},
+			service: {
+				type: 'aftership-config'
+			}
+		},
+		inputs: 1,
+		outputs: 1,
+		label: function() {
+			return this.name ? this.name : 'Aftership'
+		}
+	})
+</script>
+
+<script type='text/x-red' data-template-name='aftership'>
+	<div class='form-row'>
+		<label for='node-input-name'><i class='fa fa-tag'></i> Name</label>
+		<input type='text' id='node-input-name'/>
+	</div>
+	<div class='form-row'>
+		<label for='node-input-service'><i class='fa'></i> Service</label>
+		<input type='text' id='node-input-service' />
+	</div>
+</script>

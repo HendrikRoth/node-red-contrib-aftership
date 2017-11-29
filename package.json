@@ -1,0 +1,29 @@
+{
+  "name": "node-red-contrib-aftership",
+  "version": "0.0.1",
+  "description": "Track your packages in node-red with the aftership api",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HendrikRoth/node-red-contrib-aftership.git"
+  },
+  "keywords": [
+    "node-red"
+  ],
+  "author": "Hendrik Roth <hi@hendrikroth.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HendrikRoth/node-red-contrib-aftership/issues"
+  },
+  "homepage": "https://github.com/HendrikRoth/node-red-contrib-aftership#readme",
+  "dependencies": {
+    "aftership": "^5.3.4"
+  },
+  "node-red": {
+	"nodes": {
+		"aftership": "aftership.js"
+	}
+  }
+}

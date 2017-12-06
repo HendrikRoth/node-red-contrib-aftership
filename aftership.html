@@ -4,14 +4,26 @@
 		defaults: {
 			name: {
 				value: '',
-				require: false
+				required: false
 			},
 			key: {
-				type: 'text'
+				type: 'text',
+				required: true
+			},
+			interval: {
+				type: 'number',
+				required: false,
+				value: 30
+			},
+			onstart: {
+				type: 'boolean',
+				value: true
 			}
 		},
+		color: '#ff8500',
+		icon: 'aftership.png',
 		label: function() {
-			return this.name ? this.name : 'Aftership'
+			return this.name ? this.name : 'Aftership Config'
 		}
 	})
 </script>
@@ -25,10 +37,18 @@
 		<label for='node-config-input-apikey'><i class='fa'></i> Api Key</label>
 		<input type='text' id='node-config-input-key' />
 	</div>
+	<div class='form-row'>
+		<label for='node-config-input-interval'><i class='fa'></i> Fetch interval (minutes)</label>
+		<input type='text' id='node-config-input-interval' />
+	</div>
+	<div class='form-row'>
+		<input type="checkbox" id="node-config-input-onstart" placeholder="" style="display: inline-block; width: auto; vertical-align: top;">
+        <label for="node-config-input-onstart" style="width: 70%;">Inject on start?</label>
+	</div>
 </script>
 
 <script type='text/javascript'>
-	RED.nodes.registerType('aftership', {
+	RED.nodes.registerType('aftership-in', {
 		category: 'aftership',
 		defaults: {
 			name: {
@@ -39,6 +59,9 @@
 				type: 'aftership-config'
 			}
 		},
+		color: '#ff8500',
+		icon: 'aftership.png',
+		align: 'right',
 		inputs: 1,
 		outputs: 1,
 		label: function() {
@@ -47,7 +70,106 @@
 	})
 </script>
 
-<script type='text/x-red' data-template-name='aftership'>
+<script type='text/x-red' data-template-name='aftership-in'>
+	<div class='form-row'>
+		<label for='node-input-name'><i class='fa fa-tag'></i> Name</label>
+		<input type='text' id='node-input-name'/>
+	</div>
+	<div class='form-row'>
+		<label for='node-input-service'><i class='fa'></i> Service</label>
+		<input type='text' id='node-input-service' />
+	</div>
+</script>
+
+<script type='text/javascript'>
+	RED.nodes.registerType('aftership-get', {
+		category: 'aftership',
+		defaults: {
+			name: {
+				value: '',
+				required: false
+			},
+			service: {
+				type: 'aftership-config'
+			}
+		},
+		color: '#ff8500',
+		icon: 'aftership.png',
+		inputs: 1,
+		outputs: 1,
+		label: function() {
+			return this.name ? this.name : 'Aftership Get'
+		}
+	})
+</script>
+
+<script type='text/x-red' data-template-name='aftership-get'>
+	<div class='form-row'>
+		<label for='node-input-name'><i class='fa fa-tag'></i> Name</label>
+		<input type='text' id='node-input-name'/>
+	</div>
+	<div class='form-row'>
+		<label for='node-input-service'><i class='fa'></i> Service</label>
+		<input type='text' id='node-input-service' />
+	</div>
+</script>
+
+<script type='text/javascript'>
+	RED.nodes.registerType('aftership-out', {
+		category: 'aftership',
+		defaults: {
+			name: {
+				value: '',
+				required: false
+			},
+			service: {
+				type: 'aftership-config'
+			}
+		},
+		color: '#ff8500',
+		icon: 'aftership.png',
+		inputs: 0,
+		outputs: 1,
+		label: function() {
+			return this.name ? this.name : 'Aftership Out'
+		}
+	})
+</script>
+
+<script type='text/x-red' data-template-name='aftership-out'>
+	<div class='form-row'>
+		<label for='node-input-name'><i class='fa fa-tag'></i> Name</label>
+		<input type='text' id='node-input-name'/>
+	</div>
+	<div class='form-row'>
+		<label for='node-input-service'><i class='fa'></i> Service</label>
+		<input type='text' id='node-input-service' />
+	</div>
+</script>
+
+<script type='text/javascript'>
+	RED.nodes.registerType('aftership-notify', {
+		category: 'aftership',
+		defaults: {
+			name: {
+				value: '',
+				required: false
+			},
+			service: {
+				type: 'aftership-config'
+			}
+		},
+		color: '#ff8500',
+		icon: 'aftership.png',
+		inputs: 0,
+		outputs: 1,
+		label: function() {
+			return this.name ? this.name : 'Aftership Notify'
+		}
+	})
+</script>
+
+<script type='text/x-red' data-template-name='aftership-notify'>
 	<div class='form-row'>
 		<label for='node-input-name'><i class='fa fa-tag'></i> Name</label>
 		<input type='text' id='node-input-name'/>

@@ -90,12 +90,11 @@ module.exports = function(RED) {
 		var service = services[n.service]
 
 		self.on('input', function(msg) {
+			var slug = msg.payload.topic
 			var tracking_number = msg.payload
-			var slug = msg.payload.slug
-			var tracking_number = msg.payload.tracking_number
 
-			if (!slug) self.error('No carrier specified (dhl, ups, ...)')
-			if (!tracking_number) self.error('No tracking number specified')
+			if (!slug) self.error('Topic: No carrier specified (dhl, ups, ...)')
+			if (!tracking_number) self.error('Payload: No tracking number specified')
 
 			var body = {
 				'tracking': {
@@ -125,12 +124,11 @@ module.exports = function(RED) {
 		var service = services[n.service]
 
 		self.on('input', function(msg) {
+			var slug = msg.topic
 			var tracking_number = msg.payload
-			var slug = msg.payload.slug
-			var tracking_number = msg.payload.tracking_number
 
-			if (!slug) self.error('No carrier specified (dhl, ups, ...)')
-			if (!tracking_number) self.error('No tracking number specified')
+			if (!slug) self.error('Topic: No carrier specified (dhl, ups, ...)')
+			if (!tracking_number) self.error('Payload: No tracking number specified')
 
 			service.aftership.call('GET', '/trackings/'+ slug +'/'+ tracking_number, function(err, resp) {
 				if (err && err.code === 4004) {

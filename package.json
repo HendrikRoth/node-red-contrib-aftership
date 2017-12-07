@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-aftership",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Track your packages in node-red with the aftership api",
   "main": "index.js",
   "scripts": {},

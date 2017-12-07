@@ -77,7 +77,7 @@ module.exports = function(RED) {
 			self.load()
 		}
 
-		setInterval(self.load, self.config.interval * 3600)
+		setInterval(self.load, self.config.interval * 60000)
 		services[self.id] = self
 	}
 

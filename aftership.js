@@ -90,7 +90,7 @@ module.exports = function(RED) {
 		var service = services[n.service]
 
 		self.on('input', function(msg) {
-			var slug = msg.payload.topic
+			var slug = msg.topic
 			var tracking_number = msg.payload
 
 			if (!slug) self.error('Topic: No carrier specified (dhl, ups, ...)')
